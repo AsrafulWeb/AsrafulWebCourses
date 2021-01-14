@@ -1,38 +1,39 @@
-.App {
-  text-align: center;
-}
+*{outline: none !important;}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.headerMain .active {
+    border-top: 2px solid #117A8B !important;
+    margin-top: -2px !important;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.dActive{
+    box-shadow: none !important;
+    background: #0b4b55;
+    border: 1px solid #00afaf;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#headerMenu .nav-item{
+    margin-right: 20px !important;
+    margin-left: 10px !important;
 }
-
-.App-link {
-  color: #61dafb;
+.footerMain{
+    background-color: #141414;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#accordionExampleFor{
+    height: 525px;
+    overflow-x: hidden;
+}
+#coursesVideoList{
+    padding: 0 !important;
+}
+.MuiButton-label{
+    display: block !important;
+}
+.moduleBtn[aria-expanded="true"] svg{
+    transform: rotate(180deg) !important;
+}
+.collapsed svg{
+    transform: rotate(0) !important;
+}
+#accordionExample{
+    height: 520px !important;
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
 }

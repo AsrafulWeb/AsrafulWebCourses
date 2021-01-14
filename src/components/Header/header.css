@@ -1,0 +1,10 @@
+.headerMain{
+    background-color: #F8F9FA;
+}
+#headerSearchInput{
+    width: 200px;
+    transition: all .4s;
+}
+#headerSearchInput:focus{
+    width: 400px !important;
+}
