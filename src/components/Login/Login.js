@@ -20,7 +20,7 @@ const Login = () => {
         e.target.reset()
     }
     const handelPassSignIn = (e) => {
-        passSignup(email, password)
+        passLogin(email, password)
         e.preventDefault()
         e.target.reset()
     }
@@ -48,9 +48,11 @@ const Login = () => {
                                             <div class="form-group">
                                                 <input onChange={(e) => setName(e.target.value)} type="name" class="form-control signUpFormNAme" id="signUpName" aria-describedby="emailHelp" placeholder="Your Name" required />
                                             </div>
+                                            <br/>
                                             <div class="form-group">
                                                 <input onChange={(e) => setEmail(e.target.value)} type="email" class="form-control signUpFormEmail" id="signUpEmail" aria-describedby="emailHelp" placeholder="Your Email" required />
                                             </div>
+                                            <br />
                                             <div class="form-group">
                                                 <input onChange={(e) => setPassword(e.target.value)} type="password" class="form-control signUpFormPassword" id="signUpPassword" placeholder="Your Password" required />
                                             </div>
@@ -60,6 +62,8 @@ const Login = () => {
                                                 </div>
                                             }
                                             <a onClick={() => setSignUp(false)} style={{ cursor: 'pointer' }} className="">I have account</a>
+                                            <br/>
+                                            <br/>
                                             <button type="submit" class="btn btn-primary float-right">Create account</button>
                                         </form> :
                                         <form onSubmit={handelPassSignIn} className='loginForm d-block'>
@@ -74,6 +78,7 @@ const Login = () => {
                                             <div class="form-group">
                                                 <input onChange={(e) => setEmail(e.target.value)} type="email" class="form-control loginFormEmail" id="loginEmail" aria-describedby="emailHelp" placeholder="Your Email" required />
                                             </div>
+                                            <br />
                                             <div class="form-group">
                                                 <input onChange={(e) => setPassword(e.target.value)} type="password" class="form-control loginFormPassword" id="loginPassword" placeholder="Your Password" required />
                                             </div>
@@ -83,11 +88,13 @@ const Login = () => {
                                                 </div>
                                             }
                                             <a onClick={() => setSignUp(true)} style={{ cursor: 'pointer' }} className="">I don't have account</a>
+                                            <br />
+                                            <br/>
                                             <button type="submit" class="btn btn-primary float-right">Login</button>
                                         </form>
                                 }
                             </div>}
-                    <br /><br /><br />
+                    <br /><br /><br /><br /><br /><br /><br />
                 </div>
             </div>
         </div >

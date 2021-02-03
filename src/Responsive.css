@@ -14,7 +14,14 @@
     cols    1     2      3      4      5      6      7      8
     px      68    160    252    344    436    528    620    712    */
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .carouselSection {
+        margin-bottom: -40px;
+    }
+    .carouselSection .btn {
+        margin-top: -70px !important;
+    }
+}
 
 /*		Mobile Layout: 320px.
             Gutters: 24px.
@@ -25,11 +32,16 @@
     px      68    160    252    */
 
 @media only screen and (max-width: 767px) {
-    .coursesOutlineAndVideoPage .row {
+    /* .coursesOutlineAndVideoPage .row {
         display: block !important;
     }
+    .coursesOutlineAndVideoPage .row .col-3 {
+        max-width: 76% !important;
+    }
+    .coursesOutlineAndVideoPage .row .col-9 {
+        max-width: 98% !important;
+    }
     .coursesOutlineAndVideoPage .row>div {
-        max-width: 75% !important;
         margin-top: 30px !important;
         margin: 0 auto;
         border: 1px solid #c7c7c7;
@@ -39,17 +51,77 @@
     }
     .coursesOutlineAndVideoPage .row>div #accordionExampleFor {
         width: 100% !important;
-    }
+    } */
     .card {
         max-width: 100% !important;
     }
-    #headerSearchInput:focus{
+    #headerSearchInput:focus {
         max-width: 200px !important;
     }
-    #navDashboard{
+    #navDashboard {
         font-size: 23px !important;
         padding: 8px 18px !important;
         margin: 10px 0 0 0 !important;
+    }
+    .carousel-inner {
+        width: 100% !important;
+        margin-left: 0% !important;
+    }
+    .carousel-caption {
+        bottom: -20px !important;
+        left: 2% !important;
+    }
+    .carouselForMobile {
+        width: 100%;
+        display: block !important;
+    }
+    .carousel1 {
+        display: none !important;
+    }
+    .carouselSection {
+        width: 98% !important;
+        margin-bottom: 0px !important;
+        width: 100% !important;
+    }
+    .carousel-caption h1, h2 {
+        font-size: 20px !important;
+    }
+    .carousel-caption .btn {
+        margin-top: -90px !important;
+    }
+    .navRight {
+        display: inline !important;
+    }
+    .dashTabs {
+        width: 100% !important;
+        overflow-y: scroll !important;
+    }
+    nav-tabs {
+        width: 450px !important;
+    }
+    /* courses content style */
+
+    .html5Main .row{
+        display: block !important;
+    }
+
+    .videoTFR{
+        width: 75% !important;
+        padding: 10px !important;
+        border-radius: 4px !important;
+        background-color: rgb(243, 243, 243) !important;
+        border: 1px solid rgb(219, 219, 219);
+        margin: 0 auto !important;
+        margin-bottom: 10px !important;
+    }
+
+    .videoCFR{
+        width: 98% !important;
+        padding: 10px !important;
+        border-radius: 4px !important;
+        background-color: rgb(243, 243, 243) !important;
+        border: 1px solid rgb(219, 219, 219);
+        margin: 0 auto !important;
     }
 }
 

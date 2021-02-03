@@ -1,39 +1,149 @@
-*{outline: none !important;}
+* {
+    outline: none !important;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+/* header css */
 
 .headerMain .active {
     border-top: 2px solid #117A8B !important;
     margin-top: -2px !important;
 }
-.dActive{
+
+.dActive {
     box-shadow: none !important;
     background: #0b4b55;
     border: 1px solid #00afaf;
 }
-#headerMenu .nav-item{
+
+#headerMenu .nav-item {
     margin-right: 20px !important;
     margin-left: 10px !important;
 }
-.footerMain{
+
+.nav_dash_login_btn .btn {
+    margin-top: 5px;
+}
+
+.footerMain {
     background-color: #141414;
 }
-#accordionExampleFor{
+
+#accordionExampleFor {
     height: 525px;
     overflow-x: hidden;
 }
-#coursesVideoList{
+
+#coursesVideoList {
     padding: 0 !important;
 }
-.MuiButton-label{
+
+.MuiButton-label {
     display: block !important;
 }
-.moduleBtn[aria-expanded="true"] svg{
+
+.moduleBtn[aria-expanded="true"] svg {
     transform: rotate(180deg) !important;
 }
-.collapsed svg{
+
+.collapsed svg {
     transform: rotate(0) !important;
 }
-#accordionExample{
+
+#accordionExample {
     height: 520px !important;
     overflow-y: scroll !important;
     overflow-x: hidden !important;
+}
+
+.coursesLoader {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    padding-bottom: 36.4%;
+}
+
+.coursesLoaderImg {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.contactUsOptions {
+    width: 440px;
+    margin: 0 auto;
+}
+
+.contactUsOptions a {
+    margin-right: 10px;
+}
+
+/* cart style */
+
+.dashCart {
+    display: flex;
+}
+
+.cartItem {
+    padding: 10px 15px !important;
+}
+
+.cartItem:hover {
+    box-shadow: 0 0 0 0 !important;
+}
+
+.cartPdBody {
+    display: flex;
+    padding: 0 !important;
+}
+
+.carPdImg {
+    width: 250px !important;
+    padding-right: 10px;
+}
+
+.carPdImg img {
+    width: 100% !important;
+}
+
+.cartItemCheck {
+    width: 30px !important;
+    height: 25px !important;
+    margin-right: 10px !important;
+    margin-top: 52px;
+    cursor: pointer;
+}
+
+.carousel1{
+    display: block !important;
+}
+
+.carouselForMobile {
+    width: 100%;
+    display: none;
+}
+
+.carouselSection{
+    margin-bottom: 60px;
+    width: 47%;
+    text-align: left !important;
+}
+
+.cartProducts{
+    overflow-y: scroll;
+    overflow-x: hide !important;
+    height: 440px !important;
+}
+
+.cartCancelBtn{
+    padding: 0px !important;
+    border-radius: 10px !important;
+}
+
+.courseVideoBtn{
+    text-align: left !important;
 }

@@ -6,7 +6,7 @@ const DashMyProfile = () => {
     const auth = useAuth()
 
     return (
-        <div class="tab-pane fade DashMyProfile" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="DashMyProfile" id="profile" >
             {
                 auth.user && <div style={{ width: '400px' }} className="card text-center">
                     <div className="card-body">
@@ -25,6 +25,7 @@ const DashMyProfile = () => {
                             auth.user ? <button onClick={auth.signOut} className="btn btn-danger">Log Out</button> : ''
                         }
                     </div>
+                    <br />
                 </div>
             }
         </div>

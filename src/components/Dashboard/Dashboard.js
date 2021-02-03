@@ -6,37 +6,34 @@ import DashMyCart from '../DashMyCart/DashMyCart';
 import DashAllCourses from '../DashAllCourses/DashAllCourses';
 
 const Dashboard = () => {
-    const [user, setUser] = useState({
-        name: '',
-        email: '',
-        photo: ''
-    })
 
     return (
         <section className='dashboardMain'>
             <div className="container">
                 <div className="dashboardHeader">
                     <br /><br />
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link active" id="courses-tab" data-toggle="tab" href="#courses" role="tab" aria-controls="courses" aria-selected="true">My Courses</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">My Account</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="Cart-tab" data-toggle="tab" href="#Cart" role="tab" aria-controls="Cart" aria-selected="false">My Cart</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="allCourses-tab" data-toggle="tab" href="#allCourses" role="tab" aria-controls="allCourses" aria-selected="false">All Courses</a>
-                        </li>
-                    </ul>
+                    <nav className="dashTabs">
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <a class="nav-link active" id="nav-my-courses-tab" data-bs-toggle="tab" href="#nav-my-courses" role="tab" aria-controls="nav-my-courses" aria-selected="true">My Courses</a>
+                            <a class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">My Account</a>
+                            <a class="nav-link" id="nav-cart-tab" data-bs-toggle="tab" href="#nav-cart" role="tab" aria-controls="nav-cart" aria-selected="false">My Cart</a>
+                            <a class="nav-link" id="nav-all-courses-tab" data-bs-toggle="tab" href="#nav-all-courses" role="tab" aria-controls="nav-all-courses" aria-selected="false">All Courses</a>
+                        </div>
+                    </nav>
                     <br />
-                    <div class="tab-content" id="myTabContent">
-                        <DashMyCourses/>
-                        <DashMyProfile/>
-                        <DashMyCart/>
-                        <DashAllCourses/>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-my-courses" role="tabpanel" aria-labelledby="nav-my-courses-tab">
+                            <DashMyCourses />
+                        </div>
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <DashMyProfile />
+                        </div>
+                        <div class="tab-pane fade" id="nav-cart" role="tabpanel" aria-labelledby="nav-cart-tab">
+                            <DashMyCart />
+                        </div>
+                        <div class="tab-pane fade" id="nav-all-courses" role="tabpanel" aria-labelledby="nav-all-courses-tab">
+                            <DashAllCourses />
+                        </div>
                     </div>
                     <br /><br />
 
