@@ -1,22 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const Test = () => {
-
-    // const array = [
-    //     'nu1',
-    //     'nu2',
-    //     'nu3'
-    // ]
-
-    const [coursesErr, setCoursesErr] = useState(false)
-
-    const errFu = () => {
-        // if (coursesErr === false) {
-            setCoursesErr(true)
-            console.log(coursesErr)
-        // } 
-    }
-
 
     return (
         <div>
@@ -25,7 +9,7 @@ const Test = () => {
                 <h2>Test</h2>
                 <br />
                 <div className="test">
-                    <button onClick={errFu} className="btn btn-info btn-sm">Work</button>
+                    <button className="btn btn-info btn-sm">Work</button>
                 </div>
                 <br />
                 <br />

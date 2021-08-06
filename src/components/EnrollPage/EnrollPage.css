@@ -1,0 +1,15 @@
+
+@media only screen and (max-width: 991px) {
+    .dashCart {
+        display: inline-block;
+    }
+
+    .dashCart .col-3 {
+        width: 100% !important;
+    }
+
+    .dashCart .col-4 {
+        width: 90% !important;
+        margin: 10% 5% !important;
+    }
+}

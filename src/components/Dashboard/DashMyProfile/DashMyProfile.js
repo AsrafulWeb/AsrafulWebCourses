@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAuth } from '../Login/useAuth';
+import { useAuth } from '../../Login/useAuth';
 
 const DashMyProfile = () => {
 
@@ -25,7 +25,7 @@ const DashMyProfile = () => {
                             auth.user ? <button onClick={auth.signOut} className="btn btn-danger">Log Out</button> : ''
                         }
                     </div>
-                    <br />
+                    <br /><br/><br/><br/>
                 </div>
             }
         </div>

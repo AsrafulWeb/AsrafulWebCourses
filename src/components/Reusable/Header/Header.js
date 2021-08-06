@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import './header.css';
-import logo from './../../logo/AsrafulsCourseLogo.png';
+import logo from './../../../logo/AsrafulsCourseLogo.png';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../Login/useAuth';
+import { useAuth } from '../../Login/useAuth';
 
-const Header = () => {
+const Header = (props) => {
     const auth = useAuth()
-    console.log(auth.user)
 
     const { user } = auth
 
+    const path = window.location.pathname;
+
     useEffect(() => {
-        const path = window.location.pathname;
         if (user) {
             if (path === '/dashboard') {
                 document.querySelector("#inputRight").style.display = 'none'
@@ -32,9 +32,10 @@ const Header = () => {
         if (path === '/contact') {
             document.querySelector("#navContact").classList.add("active");
         }
-    })
+    }, [path])
+
     return (
-        <header className='headerMain'>
+        <header id="headerMainId" className='headerMain'>
             <div className="container">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="container-fluid">

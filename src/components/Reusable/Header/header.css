@@ -8,3 +8,7 @@
 #headerSearchInput:focus{
     width: 400px !important;
 }
+
+.displayNone{
+    display: none;
+}

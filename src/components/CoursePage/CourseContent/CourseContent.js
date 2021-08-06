@@ -15,51 +15,45 @@ const CourseContent = () => {
     const [coursesCss, setCoursesCss] = useState('none')
     const [preloaderCss, setPreloaderCss] = useState('block')
 
-    const [coursesErr, setCoursesErr] = useState(false)
+    const [courseErr, setCourseErr] = useState(false)
 
     const { curl } = useParams()
 
+    const userToken = sessionStorage.getItem("token")
 
     useEffect(() => {
-        fetch(`http://localhost:3000/coursesdata?url=${curl}`)
+        fetch(`https://boiling-caverns-66680.herokuapp.com/coursesdata?url=${curl}`)
             .then(result => result.json())
             .then(data => {
                 setCourseDt(data)
-                if (coursesErr === '') {
-                    setCoursesErr('true')
-                }
-                console.log(coursesErr)
-                // console.log(coursesCss)
-                // console.log(preloaderCss)
-            })
-            .catch(err => {
-            })
-    }, [])
-
-    useEffect(() => {
-        // if (coursesErr) {
-        //     alert('You have a error.')
-        // }
-        // else {
-        fetch(`http://localhost:3000/coursesv?course=${curl}`)
-            .then(result => result.json())
-            .then(data => {
-                const sortedDt = data.sort((a, b) => {
-                    return parseInt(a.nu) - parseInt(b.nu)
+                setCourseErr(false)
+                fetch(`http://localhost:3001/coursesv?course=${curl}`, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        authorization: `Bearer ${userToken}`
+                    }
                 })
-                setVideoData(sortedDt)
-                setVideoUrl(data[0].url)
-                setVideoTitle(data[0].title)
-                setCoursesCss('block')
-                setPreloaderCss('none')
+                    .then(result => result.json())
+                    .then(dt => {
+                        const sortedDt = dt.sort((a, b) => {
+                            return parseInt(a.nu) - parseInt(b.nu)
+                        })
+                        setVideoData(sortedDt)
+                        setVideoUrl(dt[0].url)
+                        setVideoTitle(dt[0].title)
+                        setCoursesCss('block')
+                        setPreloaderCss('none')
+                    })
+                    .catch(err => {
+                        setPreloaderCss('none')
+                        setCourseErr(true)
+                    })
             })
             .catch(err => {
-                console.log(courseDt)
-                setCoursesErr('true')
-                console.log(coursesErr)
+                setCourseErr(true)
             })
-        // }
-    }, [])
+    }, [curl])
 
     return (
         <section className='html5Main coursesOutlineAndVideoPage'>
@@ -67,6 +61,7 @@ const CourseContent = () => {
                 <h2 style={{ padding: '10px 40px', marginBottom: '5px' }} className="text-light bg-danger">{courseDt.title}</h2>
                 <div style={{ display: preloaderCss }} className='coursesLoader'>
                     <img className='coursesLoaderImg' src={loader} alt="" />
+                    <br /><br /><br/><br/><br/><br/><br/>
                 </div>
                 <div style={{ display: coursesCss }} >
                     <div class="row">
@@ -90,6 +85,20 @@ const CourseContent = () => {
                         </div>
                     </div>
                 </div>
+                {
+                    courseErr ?
+                        <div className='row'>
+                            <div className="col-3"></div>
+                            <div className="col-6 text-center courseContentError">
+                                <br /><br /><br />
+                                <h5 className='text-success'>Sorry this course content not uploaded in our server.</h5>
+                                <br />
+                                <a href='./../../contact' className="btn btn-info text-light">Contact We</a>
+                            </div>
+                            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                            <div className="col-3"></div>
+                        </div> : ''
+                }
                 <br />
             </div>
         </section>

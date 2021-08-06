@@ -25,14 +25,11 @@ const Login = () => {
         e.target.reset()
     }
 
-    console.log(auth)
-
-
     return (
         <div className='loginMain'>
             <div className="container">
                 <br />
-                <div style={{ width: '40%', margin: '0 auto' }} className="loginForm">
+                <div className="loginForm">
                     {
                         user ?
                             <div className="alert alert-success text-center text-dark">

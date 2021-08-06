@@ -3,24 +3,23 @@ import { useParams } from 'react-router-dom';
 import { useAuth } from '../Login/useAuth';
 import CourseContent from './CourseContent/CourseContent';
 import CourseOverview from './CourseOverview/CourseOverview';
+import './CoursesPage.css'
 
 const CoursePage = () => {
 
-    const [userCourses, setUserCourses] = useState([])
     const [courseAccess, setCourseAccess] = useState(false)
 
 
     const { curl } = useParams()
 
-    const { user } = useAuth()
+    const { user, token } = useAuth()
 
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:3000/user_courses?email=${user.email}`)
+            fetch(`https://boiling-caverns-66680.herokuapp.com/user_courses?email=${user.email}`)
                 .then(res => res.json())
                 .then(data => {
-                    setUserCourses(data.course)
-                    userCourses.map(dt => {
+                    data.course.map(dt => {
                         if (dt === curl) {
                             setCourseAccess(true)
                         }
@@ -30,7 +29,7 @@ const CoursePage = () => {
     })
 
     return (
-        <div>
+        <div className="coursesPageMain">
             {
                 user ?
                     <>

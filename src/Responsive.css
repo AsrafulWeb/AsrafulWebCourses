@@ -21,6 +21,12 @@
     .carouselSection .btn {
         margin-top: -70px !important;
     }
+    .dashCart {
+        display: inline-block;
+    }
+    .dashCart .col-3, .col-4{
+        width: 100% !important;
+    }
 }
 
 /*		Mobile Layout: 320px.
@@ -100,12 +106,10 @@
         width: 450px !important;
     }
     /* courses content style */
-
-    .html5Main .row{
+    .html5Main .row {
         display: block !important;
     }
-
-    .videoTFR{
+    .videoTFR {
         width: 75% !important;
         padding: 10px !important;
         border-radius: 4px !important;
@@ -114,14 +118,22 @@
         margin: 0 auto !important;
         margin-bottom: 10px !important;
     }
-
-    .videoCFR{
+    .videoCFR {
         width: 98% !important;
         padding: 10px !important;
         border-radius: 4px !important;
         background-color: rgb(243, 243, 243) !important;
         border: 1px solid rgb(219, 219, 219);
         margin: 0 auto !important;
+    }
+    .loginForm {
+        width: 90% !important;
+    }
+    .homeLoader {
+        margin-top: 30% !important;
+    }
+    .footerMain {
+        height: 120px !important;
     }
 }
 

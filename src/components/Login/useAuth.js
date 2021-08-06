@@ -28,13 +28,13 @@ export const PrivateRoute = ({ children, ...rest }) => {
                 auth.user ? (
                     children
                 ) : (
-                        <Redirect
-                            to={{
-                                pathname: "/login",
-                                state: { from: location }
-                            }}
-                        />
-                    )
+                    <Redirect
+                        to={{
+                            pathname: "/login",
+                            state: { from: location }
+                        }}
+                    />
+                )
             }
         />
     );
@@ -54,8 +54,8 @@ export const PrivateRouteForLogin = ({ children, ...rest }) => {
                         }}
                     />
                 ) : (
-                        children
-                    )
+                    children
+                )
             }
         />
     );
@@ -67,12 +67,13 @@ const Auth = () => {
 
     const [signInSignUpError, setSignInSignUpError] = useState('')
 
-
     const gSignIn = () => {
         const provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(provider)
             .then(res => {
                 setUser(res.user)
+                tokenAdder()
+                tokenAdder()
                 window.history.back();
             })
             .catch(err => {
@@ -89,6 +90,8 @@ const Auth = () => {
                 }).then(() => {
                     setUser(res.user);
                     setSignInSignUpError('')
+                    tokenAdder()
+                    tokenAdder()
                     window.history.back();
                 });
             })
@@ -103,6 +106,8 @@ const Auth = () => {
             .then(res => {
                 setUser(res.user);
                 setSignInSignUpError('')
+                tokenAdder()
+                tokenAdder()
                 window.history.back();
             })
             .catch(err => {
@@ -126,23 +131,22 @@ const Auth = () => {
             if (usr) {
                 const user = getUser(usr)
                 setUser(user)
+                tokenAdder()
             } else {
                 setUser(null)
             }
         });
     }, [])
 
-    // const userId = '131313rr'
+    const tokenAdder = () => {
+        firebase.auth().currentUser.getIdToken(/* forceRefresh */ true)
+            .then(data => {
+                sessionStorage.setItem('token', data)
+            })
+            .catch(err => {
 
-    // useEffect(() => {
-    //     firebase.database().ref('users/' , userId).set({
-    //         username: 'asraful',
-    //         email: 'mxasraful@outlook.com',
-    //         profile_picture : 'https://fb.com/asrafulfb'
-    //       });
-    // })
-
-
+            })
+    }
 
     return {
         gSignIn,
@@ -153,5 +157,7 @@ const Auth = () => {
         signInSignUpError
     };
 };
+
+
 
 export default Auth;

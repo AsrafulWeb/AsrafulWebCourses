@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import './Banner.css';
 
-const Banner = () => {
+const Banner = (props) => {
 
-    const [bannerz, setBannerz] = useState([])
+    const [banner, setBanner] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:3000/banners')
+        fetch('https://boiling-caverns-66680.herokuapp.com/banners')
             .then(response => response.json())
-            .then(data => setBannerz(data))
+            .then(data => {
+                setBanner(data)
+                props.ok()
+            })
     }, [])
 
 
@@ -19,7 +22,7 @@ const Banner = () => {
                 </ol>
                 <div class="carousel-inner">
                     {
-                        bannerz.map(bn =>
+                        banner.map(bn =>
                             <div class={bn.class1}>
                                 <img src={bn.bg1} class="d-block w-100" alt="..." />
                                 <div class="carousel-caption text-left d-md-block carouselSection">
@@ -37,7 +40,7 @@ const Banner = () => {
                 </ol>
                 <div class="carousel-inner">
                     {
-                        bannerz.map(bn =>
+                        banner.map(bn =>
                             <div class={bn.class1}>
                                 <img src={bn.bg2} class="d-block w-100" alt="..." />
                                 <div style={{textAlign: 'left'}} class="carousel-caption text-left d-md-block carouselSection">

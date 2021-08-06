@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import './Responsive.css';
 import {
@@ -6,22 +6,29 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import Header from './components/Header/Header';
-import Banner from './components/Banner/Banner';
-import HomeCoursesOutline from './components/HomeCoursesOutline/HomeCoursesOutline';
+import Header from './components/Reusable/Header/Header';
 import CoursePage from './components/CoursePage/CoursePage';
-import WebDes from './components/WebDes/WebDes';
-import WebDev from './components/WebDev/WebDev';
 import Dashboard from './components/Dashboard/Dashboard';
 import Contact from './components/Contact/Contact';
 import About from './components/About/About';
-import Footer from './components/Footer/Footer';
+import Footer from './components/Reusable/Footer/Footer';
 import { AuthProvider, PrivateRoute } from './components/Login/useAuth';
 import Login from './components/Login/Login';
 import Error from './components/Error/Error';
 import Test from './components/Test/Test';
+import EnrollPage from './components/EnrollPage/EnrollPage';
+import HomeLoader from './components/Reusable/HomeLoader/HomeLoader';
+import Courses from './components/Courses/Courses';
+import Home from './components/Home/Home';
 
 function App() {
+
+  const [coursesPgOk, setCoursesPgOk] = useState(false)
+
+  // Function for courses page loader management
+  const coursesPageOk = () => {
+    setCoursesPgOk(true)
+  }
 
   return (
     <div className="App">
@@ -40,11 +47,20 @@ function App() {
                 <Contact />
               </Route>
               <Route exact path="/courses">
-                <HomeCoursesOutline />
+                {
+                  coursesPgOk ?
+                    ""
+                    :
+                    <HomeLoader />
+                }
+                <Courses ok={coursesPageOk} />
               </Route>
               <Route path="/course/:curl">
                 <CoursePage />
               </Route>
+              <PrivateRoute path="/enroll/:eurl">
+                <EnrollPage />
+              </PrivateRoute>
               <PrivateRoute path="/dashboard">
                 <Dashboard />
               </PrivateRoute>
@@ -52,8 +68,7 @@ function App() {
                 <Login />
               </Route>
               <Route exact path="/">
-                <Banner />
-                <HomeCoursesOutline />
+                <Home />
               </Route>
               <Route exact path="*">
                 <Error />
