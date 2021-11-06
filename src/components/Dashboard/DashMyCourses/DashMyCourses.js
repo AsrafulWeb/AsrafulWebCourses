@@ -1,34 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from './../../Login/useAuth';
 import DashMyCourse from './DashMyCourse/DashMyCourse';
-import spinner from './../../../logo/Spinner.gif'
+import axios from 'axios';
 
 const DashMyCourses = () => {
 
     const [coursesDt, setCoursesDt] = useState([])
-    const [coursesLoader, setCoursesLoader] = useState('block')
-    const [userCoursesCss, setUserCoursesCss] = useState('none')
+    const [coursesLoader, setCoursesLoader] = useState(true)
     const [dataErr, setDataErr] = useState(false)
     const [purchasedCourses, setPurchasedCourses] = useState(true)
 
-    const { user, token } = useAuth()
+    const { user } = useAuth()
 
     useEffect(() => {
-        fetch(`https://boiling-caverns-66680.herokuapp.com/coursesdt`)
-            .then(res => res.json())
+        axios('/coursesdt')
             .then(result => {
                 if (purchasedCourses) {
-                    fetch(`https://boiling-caverns-66680.herokuapp.com/user_courses?email=${user.email}`)
-                        .then(res => res.json())
+                    axios(`/user_courses?email=${user.email}`)
                         .then(data => {
-                            const dta = data.course
+                            const dta = data.data.course
                             const dataMain = dta.map(dt => {
-                                const cr = result.find(crDt => crDt.url === dt)
+                                const cr = result.data.find(crDt => crDt.url === dt)
                                 return (cr)
                             })
                             setCoursesDt(dataMain)
-                            setUserCoursesCss('inline-block')
-                            setCoursesLoader('none')
+                            setCoursesLoader(false)
                         })
                         .catch(err => {
                             setPurchasedCourses(false)
@@ -42,38 +38,45 @@ const DashMyCourses = () => {
 
     return (
         <div class="dashYourCourses container" id="dashYourCourses">
-            {purchasedCourses ?
-                <>
-                    <div style={{ display: coursesLoader }} className="dashLoader">
-                        <img src={spinner} alt="" />
-                        <br /><br /><br /><br /><br /><br /><br/><br/>
+            {
+                purchasedCourses ?
+                    <>
+                        {
+                            coursesLoader ?
+                                <div className="dashLoader d-flex justify-content-center mt-5">
+                                    <div class="spinner-border" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                                :
+                                <div>
+                                    <div className="row">
+                                        {
+                                            <>
+                                                {dataErr ?
+                                                    <div className="dashCoursesErr">
+                                                        <br /><br />
+                                                        <p>We get a error.</p>
+                                                        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                                                    </div> :
+                                                    coursesDt.map(cr =>
+                                                        <DashMyCourse cr={cr} />
+                                                    )
+                                                }
+                                            </>
+                                        }
+                                    </div>
+                                </div>
+                        }
+                    </>
+                    :
+                    <div className='dontHaveCourse'>
+                        <br /><br />
+                        <p>You Don't Have Any Course.</p>
+                        <br />
+                        <a href="./../../../courses" className="btn btn-success">Buy Now</a>
+                        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                     </div>
-                    <div style={{ display: userCoursesCss }}>
-                        <div className="row">
-                            {
-                                <>
-                                    {dataErr ?
-                                        <div className="dashCoursesErr">
-                                            <br /><br />
-                                            <p>We get a error.</p>
-                                            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-                                        </div> :
-                                        coursesDt.map(cr =>
-                                            <DashMyCourse cr={cr} />
-                                        )
-                                    }
-                                </>
-                            }
-                        </div>
-                    </div>
-                </> :
-                <div className='dontHaveCourse'>
-                    <br /><br />
-                    <p>You Don't Have Any Course.</p>
-                    <br />
-                    <a href="./../../../courses" className="btn btn-success">Buy Now</a>
-                    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-                </div>
             }
         </div>
     );

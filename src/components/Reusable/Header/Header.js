@@ -1,20 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './header.css';
 import logo from './../../../logo/AsrafulsCourseLogo.png';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../Login/useAuth';
 
 const Header = (props) => {
-    const auth = useAuth()
 
-    const { user } = auth
+    const { user } = useAuth()
 
     const path = window.location.pathname;
 
     useEffect(() => {
         if (user) {
             if (path === '/dashboard') {
-                document.querySelector("#inputRight").style.display = 'none'
+                
             }
         }
         if (path === '/') {

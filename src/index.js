@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import axios from 'axios';
+
+// Set axios default url
+axios.defaults.baseURL = 'https://boiling-caverns-66680.herokuapp.com';
 
 ReactDOM.render(
   <React.StrictMode>

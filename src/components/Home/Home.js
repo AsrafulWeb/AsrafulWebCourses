@@ -1,33 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import Courses from '../Courses/Courses';
 import HomeLoader from '../Reusable/HomeLoader/HomeLoader';
 import Banner from './Banner/Banner';
-import HomeCoursesOutline from './HomeCoursesOutline/HomeCoursesOutline';
 
 const Home = () => {
     const [bannerOk, setBannerOk] = useState(false)
     const [coursesOk, setCoursesOk] = useState(false)
     const [pageOk, setPageOk] = useState(false)
 
-    const path = window.location.pathname
-
-    const AllOk = () => {
+    useEffect(() => {
         if (bannerOk && coursesOk) {
             setPageOk(true)
         }
         else {
             setPageOk(false)
         }
-    }
+    }, [bannerOk, coursesOk])
 
-    // Function for home page loader management
-    const bannerTrue = () => {
-        setBannerOk(true)
-        AllOk()
-    }
-    const coursesTrue = () => {
-        setCoursesOk(true)
-        AllOk()
-    }
 
     return (
         <div className="homeMain">
@@ -37,8 +26,8 @@ const Home = () => {
                     :
                     <HomeLoader />
             }
-            <Banner ok={bannerTrue} />
-            <HomeCoursesOutline ok={coursesTrue} />
+            <Banner ok={setBannerOk} />
+            <Courses ok={setCoursesOk} home={true} />
         </div>
     );
 };

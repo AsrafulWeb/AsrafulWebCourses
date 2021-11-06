@@ -1,6 +1,7 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import spinner from './../../../logo/Spinner2.gif'
+import HomeLoader from '../../Reusable/HomeLoader/HomeLoader';
 
 const CourseOverview = () => {
 
@@ -11,10 +12,9 @@ const CourseOverview = () => {
     const { curl } = useParams()
 
     useEffect(() => {
-        fetch(`https://boiling-caverns-66680.herokuapp.com/coursesData?url=${curl}`)
-            .then(res => res.json())
+        axios(`/coursesData?url=${curl}`)
             .then(data => {
-                setCoursesDt(data)
+                setCoursesDt(data.data)
                 setCourseErr(false)
                 setLoader(false)
             })
@@ -30,12 +30,7 @@ const CourseOverview = () => {
             <div className="container">
                 {
                     loader ?
-                        <div className="courseLoader">
-                            <div className="text-center">
-                                <img src={spinner} alt="" className=""/>
-                                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-                            </div>
-                        </div>
+                        <HomeLoader />
                         :
                         <>
                             {
@@ -44,8 +39,7 @@ const CourseOverview = () => {
                                         <br /><br />
                                         <h3>Sorry we don't have any course in this url.</h3>
                                         <br />
-                                        <a href='./../../../courses' className="btn btn-outline-success">Buy Course</a>
-                                        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                                        <a href='/courses' className="btn btn-outline-success">Buy Course</a>
                                     </div>
                                     :
                                     <div className="row mb-3">

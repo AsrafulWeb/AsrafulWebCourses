@@ -20,12 +20,12 @@ const getUser = user => {
 }
 
 export const PrivateRoute = ({ children, ...rest }) => {
-    const auth = useAuth()
+    const { user } = useAuth()
     return (
         <Route
             {...rest}
             render={({ location }) =>
-                auth.user ? (
+                user ? (
                     children
                 ) : (
                     <Redirect
@@ -82,7 +82,7 @@ const Auth = () => {
             })
     }
 
-    const passSignup = (name, email, password, x) => {
+    const passSignup = (name, email, password) => {
         firebase.auth().createUserWithEmailAndPassword(email, password)
             .then(res => {
                 firebase.auth().currentUser.updateProfile({

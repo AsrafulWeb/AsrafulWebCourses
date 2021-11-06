@@ -27,7 +27,7 @@ const CourseContent = () => {
             .then(data => {
                 setCourseDt(data)
                 setCourseErr(false)
-                fetch(`http://localhost:3001/coursesv?course=${curl}`, {
+                fetch(`http://boiling-caverns-66680.herokuapp.com/coursesv?course=${curl}`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
@@ -36,6 +36,7 @@ const CourseContent = () => {
                 })
                     .then(result => result.json())
                     .then(dt => {
+                        console.log(dt)
                         const sortedDt = dt.sort((a, b) => {
                             return parseInt(a.nu) - parseInt(b.nu)
                         })

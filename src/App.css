@@ -11,6 +11,10 @@ html, body {
     margin: 0;
 }
 
+.content{
+    min-height: 100vh !important;
+}
+
 /* header css */
 
 .headerMain .active {
@@ -31,11 +35,6 @@ html, body {
 
 .nav_dash_login_btn .btn {
     margin-top: 5px;
-}
-
-.loginForm {
-    width: 55% !important;
-    margin: 0 auto !important;
 }
 
 .footerMain {
@@ -168,17 +167,19 @@ body{
     position: relative;
 }
 
+/* Full page loader section */
 .homePageLoader{
     position: fixed;
+    top: 0;
+    left: 0;
     z-index: 1000;
     width: 100%;
-    height: 200%;
+    height: 100vh;
     background: #fff;
 }
 
-.homeLoader {
-    width: 200px;
-    height: 200px;
-    margin: auto auto;
-    margin-top: 15%;
+.homeLoader{
+    margin-top: 48vh !important;
 }
+
+/* Login page */

@@ -1,29 +1,27 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import './Courses.css';
 
-const Courses = (props) => {
+const Courses = ({ ok, home }) => {
 
-    
     const [coursesDt, setCoursesDt] = useState([])
 
     useEffect(() => {
-        fetch('https://boiling-caverns-66680.herokuapp.com/coursesdt')
-            .then(res => res.json())
+        axios("/coursesdt")
             .then(data => {
-                setCoursesDt(data)
-                props.ok()
+                if (home) {
+                    setCoursesDt(data.data.slice(0, 6))
+                } else {
+                    setCoursesDt(data.data)
+                }
+                ok(true)
             })
     })
 
-
-
     return (
-        <section className='HomeCoursesOutlineMain'>
-            <div className="container">
-                <br />
-                <br />
-                <br />
-                <h1 className="text-center">Our Courses</h1>
-                <br /><br />
+        <section className='CoursesMain pt-5'>
+            <div className="container mt-5">
+                <h1 className="text-center mb-5 mt-4">Our Courses</h1>
                 <div className="card-deck">
                     <div class="row">
                         {
@@ -35,7 +33,7 @@ const Courses = (props) => {
                                             <h5 class="card-title">{dt.title}</h5>
                                             <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
                                             <p class="card-text"><small class="text-muted">Last updated 1 day ago</small></p>
-                                            <a href={"/course/" + dt.url} className="btn btn-danger">Larne More</a>
+                                            <a href={"/course/" + dt.url} className="btn btn-info btn-sm px-4">Enroll</a>
                                         </div>
                                     </div>
                                 </div>
@@ -43,6 +41,14 @@ const Courses = (props) => {
                         }
                     </div>
                 </div>
+                {
+                    home &&
+                    <div className="d-flex justify-content-center mt-4 mb-5">
+                        <a href="/courses">
+                            <button className="btn btn-primary px-5">See More</button>
+                        </a>
+                    </div>
+                }
             </div>
         </section>
     );

@@ -1,50 +1,54 @@
 import React, { useEffect, useState } from 'react';
 import DashCourses from './DashCourses/DashCourses';
-import spinner from './../../../logo/Spinner.gif'
+import axios from 'axios';
 
 const DashAllCourses = () => {
 
     const [coursesData, setCoursesData] = useState([])
-    const [coursesLoader, setCoursesLoader] = useState('block')
-    const [userCoursesCss, setUserCoursesCss] = useState('none')
+    const [coursesLoader, setCoursesLoader] = useState(true)
     const [dataErr, setDataErr] = useState(false)
 
     useEffect(() => {
-        fetch(`https://boiling-caverns-66680.herokuapp.com/coursesdt`)
-            .then(result => result.json())
+        axios('/coursesdt')
             .then(data => {
-                setCoursesData(data)
-                setCoursesLoader('none')
-                setUserCoursesCss('block')
+                setCoursesData(data.data)
+                setCoursesLoader(false)
             })
-            .catch(err => setDataErr(true))
+            .catch(err => {
+                setDataErr(true)
+            })
     }, [])
 
     return (
         <div class="dashAllCourses container" id="allCourses" role="tabpanel" aria-labelledby="allCourses-tab">
-            <div style={{ display: coursesLoader }} className="dashLoader mb-5">
-                <img src={spinner} alt="" />
-                <br/><br/><br/>
-            </div>
-            <div style={{ display: userCoursesCss }}>
-                <div className="row">
-                    {
-                        <>
-                            {dataErr ?
-                                <div className="dashCoursesErr">
-                                    <br /><br />
-                                    <p>We get a error.</p>
-                                    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-                                </div> :
-                                coursesData.map(cr =>
-                                    <DashCourses cr={cr} />
-                                )
+            {
+                coursesLoader ?
+                    <div className="dashLoader d-flex justify-content-center mt-5">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                    :
+                    <div>
+                        <div className="row">
+                            {
+                                <>
+                                    {
+                                        dataErr ?
+                                            <div className="dashCoursesErr">
+                                                <br /><br />
+                                                <p>We get a error.</p>
+                                                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                                            </div> :
+                                            coursesData?.map(cr =>
+                                                <DashCourses cr={cr} />
+                                            )
+                                    }
+                                </>
                             }
-                        </>
-                    }
-                </div>
-            </div>
-            <br />
+                        </div>
+                    </div>
+            }
         </div>
     );
 };

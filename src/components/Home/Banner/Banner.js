@@ -1,59 +1,50 @@
-import React, { useEffect, useState } from 'react';
-import './Banner.css';
+import React from 'react';
+import useEmblaCarousel from 'embla-carousel-react'
+import "./Banner.css"
+import { useState } from 'react';
+import { useEffect } from 'react';
+import Autoplay from 'embla-carousel-autoplay';
+import axios from 'axios';
 
-const Banner = (props) => {
-
-    const [banner, setBanner] = useState([])
+const Banner = ({ ok }) => {
+    const [bannerDt, setBannerDt] = useState(null)
+    const [emblaRef] = useEmblaCarousel({ loop: false }, [Autoplay({ delay: 3000 })])
 
     useEffect(() => {
-        fetch('https://boiling-caverns-66680.herokuapp.com/banners')
-            .then(response => response.json())
+        axios.get("/banners")
             .then(data => {
-                setBanner(data)
-                props.ok()
+                setBannerDt(data.data)
+                ok(true)
             })
     }, [])
 
 
     return (
-        <section className="bannerMain">
-            <div id="carouselExampleCaptions" class="carousel slide carousel1" data-ride="carousel">
-                <ol class="carousel-indicators">
-                </ol>
-                <div class="carousel-inner">
-                    {
-                        banner.map(bn =>
-                            <div class={bn.class1}>
-                                <img src={bn.bg1} class="d-block w-100" alt="..." />
-                                <div class="carousel-caption text-left d-md-block carouselSection">
-                                    <h1>{bn.title}</h1>
-                                    <h5 className="text-primary">Instructor: {bn.instructor}</h5>
-                                    <br /><br /><br />
-                                    <a href={bn.link} className='btn btn-outline-primary'>Enroll Now</a>
+        <div className="container mt-3">
+            {
+                bannerDt &&
+                <div className="embla" ref={emblaRef}>
+                    <div className="embla__container">
+                        {
+                            bannerDt?.map((dt) =>
+                                <div className="embla__slide bannerItem">
+                                    <div className="contenText text-light">
+                                        <h2>{dt.title}</h2>
+                                        <br />
+                                        <div>Instructor: {dt.instructor}</div>
+                                        <br />
+                                        <a href={dt.link}>
+                                            <button className="btn btn-sm btn-primary px-4">View Details</button>
+                                        </a>
+                                    </div>
+                                    <img className='img-fluid bannerItemImg' src={dt.bg1} alt="" />
                                 </div>
-                            </div>
-                        )}
+                            )
+                        }
+                    </div>
                 </div>
-            </div>
-            <div id="carouselExampleCaptions" class="carousel slide carouselForMobile" data-ride="carousel">
-                <ol class="carousel-indicators">
-                </ol>
-                <div class="carousel-inner">
-                    {
-                        banner.map(bn =>
-                            <div class={bn.class1}>
-                                <img src={bn.bg2} class="d-block w-100" alt="..." />
-                                <div style={{textAlign: 'left'}} class="carousel-caption text-left d-md-block carouselSection">
-                                    <h1>{bn.title}</h1>
-                                    <h5 className="text-primary">Instructor: {bn.instructor}</h5>
-                                    <br /><br /><br />
-                                    <a href={bn.link} className='btn btn-outline-primary'>Enroll Now</a>
-                                </div>
-                            </div>
-                        )}
-                </div>
-            </div>
-        </section>
+            }
+        </div>
     );
 };
 

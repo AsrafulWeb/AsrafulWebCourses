@@ -1,11 +1,12 @@
 import React from 'react';
-import loader from './../../../logo/Spinner2.gif'
 
 const HomeLoader = () => {
     return (
         <section className='homePageLoader'>
-            <div className="homeLoader">
-                <img src={loader} alt="" className="homeLoaderImg" />
+            <div className="homeLoader d-flex justify-content-center align-items-center">
+                <div class="spinner-border text-secondary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
             </div>
         </section>
     );
