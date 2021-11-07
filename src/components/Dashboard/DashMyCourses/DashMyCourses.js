@@ -74,8 +74,7 @@ const DashMyCourses = () => {
                         <br /><br />
                         <p>You Don't Have Any Course.</p>
                         <br />
-                        <a href="./../../../courses" className="btn btn-success">Buy Now</a>
-                        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                        <a href="/courses" className="btn btn-success">Buy Now</a>
                     </div>
             }
         </div>

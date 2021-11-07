@@ -9,7 +9,7 @@ const DashCourses = (props) => {
                 <img src={cr.thum} class="card-img-top" alt="..." />
                 <div class="card-body">
                     <h5 class="card-title">{cr.title}</h5>
-                    <Link to={"./../course/" + cr.url} className="btn btn-outline-danger btn-sm">Enrol Now</Link>
+                    <Link to={"/course/" + cr.url} className="btn btn-outline-danger btn-sm">Enrol Now</Link>
                 </div>
             </div>
         </div>

@@ -115,8 +115,7 @@ const EnrollPage = () => {
                             <br /><br /><br />
                             <h3 className="text-danger">Please don't use url for enroll courses</h3>
                             <br />
-                            <a href="./../../courses" className="btn btn-outline-dark">Buy Course</a>
-                            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                            <a href="/courses" className="btn btn-outline-dark">Buy Course</a>
                         </div>
                     </div>
                     :

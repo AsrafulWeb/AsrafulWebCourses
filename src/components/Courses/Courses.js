@@ -32,7 +32,7 @@ const Courses = ({ ok, home }) => {
                                         <div class="card-body">
                                             <h5 class="card-title">{dt.title}</h5>
                                             <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                                            <p class="card-text"><small class="text-muted">Last updated 1 day ago</small></p>
+                                            <p class="card-text"><small class="text-muted">Instructor: {dt.instructor}</small></p>
                                             <a href={"/course/" + dt.url} className="btn btn-info btn-sm px-4">Enroll</a>
                                         </div>
                                     </div>
