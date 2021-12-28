@@ -27,11 +27,13 @@ const DashMyCourses = () => {
                             setCoursesLoader(false)
                         })
                         .catch(err => {
+                            setCoursesLoader(false)
                             setPurchasedCourses(false)
                         })
                 }
             })
             .catch(err => {
+                setCoursesLoader(false)
                 setDataErr(true)
             })
     }, [])
@@ -53,11 +55,10 @@ const DashMyCourses = () => {
                                     <div className="row">
                                         {
                                             <>
-                                                {dataErr ?
-                                                    <div className="dashCoursesErr">
-                                                        <br /><br />
+                                                {
+                                                dataErr ?
+                                                    <div className="dashCoursesErr pt-5 text-center">
                                                         <p>We get a error.</p>
-                                                        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                                                     </div> :
                                                     coursesDt.map(cr =>
                                                         <DashMyCourse cr={cr} />
@@ -70,8 +71,7 @@ const DashMyCourses = () => {
                         }
                     </>
                     :
-                    <div className='dontHaveCourse'>
-                        <br /><br />
+                    <div className='dontHaveCourse text-center mt-5'>
                         <p>You Don't Have Any Course.</p>
                         <br />
                         <a href="/courses" className="btn btn-success">Buy Now</a>

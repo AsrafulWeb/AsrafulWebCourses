@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 * {
     outline: none !important;
+    text-decoration: none;
 }
 
 body{
@@ -11,8 +14,16 @@ html, body {
     margin: 0;
 }
 
+a{    
+    text-decoration: none;
+}
+
 .content{
     min-height: 100vh !important;
+}
+
+.ff-roboto{
+    font-family: 'Roboto', sans-serif;
 }
 
 /* header css */

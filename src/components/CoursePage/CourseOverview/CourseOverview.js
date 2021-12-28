@@ -60,7 +60,7 @@ const CourseOverview = () => {
                                                     <p class="card-text">By: {coursesDt.instructor}</p>
                                                     {
                                                         coursesDt.premium ?
-                                                            <h3 className='text-danger'>Price: {coursesDt.price}<strong></strong></h3>
+                                                            <h3 className='text-danger ff-roboto'>Price: {coursesDt.price}<strong >৳</strong></h3>
                                                             :
                                                             <h3 className='text-success'>Free<strong></strong></h3>
                                                     }

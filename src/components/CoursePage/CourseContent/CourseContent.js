@@ -21,6 +21,7 @@ const CourseContent = () => {
     useEffect(() => {
         axios(`/coursesdata?url=${curl}`)
             .then(data => {
+                console.log(data.data)
                 setCourseDt(data.data)
                 setCourseErr(false)
                 axios(`/coursesv?course=${curl}`, {
@@ -31,9 +32,10 @@ const CourseContent = () => {
                     }
                 })
                     .then(dt => {
+                        console.log(dt.data)
                         const contentDt = dt.data
                         const sortedDt = contentDt.sort((a, b) => {
-                            return parseInt(a.nu) - parseInt(b.nu)
+                            return a.nu - b.nu
                         })
                         setVideoData(sortedDt)
                         setActiveItem(contentDt[0])
@@ -47,6 +49,7 @@ const CourseContent = () => {
             .catch(err => {
                 setPreloader(false)
                 setCourseErr(true)
+                console.log(err)
             })
     }, [curl, userToken])
 
@@ -81,6 +84,10 @@ const CourseContent = () => {
     }, [preloader, videoData, activeItem])
 
 
+    console.log(activeItem)
+    console.log(videoData)
+
+
     return (
         <section className='html5Main coursesOutlineAndVideoPage'>
             <div className="container">
@@ -97,17 +104,17 @@ const CourseContent = () => {
                                     <div class="nav flex-column nav-pills htmlCoursesMenu" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                         {
                                             videoData.map(vd =>
-                                                <Button style={{ textAlign: "left !important" }} className={vd.id === activeItem.id ? "activeCourseContent secondary text-left courseVideoBtn" : "secondary text-left courseVideoBtn"} onClick={() => {
-                                                    changeContent(vd.id)
-                                                }} data-toggle="pill" >{vd.title}</Button>
+                                                <Button style={{ textAlign: "left !important" }} className={vd?.id === activeItem?.id ? "activeCourseContent secondary text-left courseVideoBtn" : "secondary text-left courseVideoBtn"} onClick={() => {
+                                                    changeContent(vd?.id)
+                                                }} data-toggle="pill" >{vd?.title}</Button>
                                             )
                                         }
                                     </div>
                                 </div>
                                 <div class="col-9 videoCFR">
                                     <div class="tab-content coursesVideoMain" id="v-pills-tabContent">
-                                        <h4 className="videoTitleMain">{activeItem.title}</h4>
-                                        <iframe title={activeItem.title} width="100%" height="464" src={activeItem.url} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+                                        <h4 className="videoTitleMain">{activeItem?.title}</h4>
+                                        <iframe title={activeItem?.title} width="100%" height="464" src={activeItem?.url} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
                                         <div class="d-flex justify-content-between bd-highlight mb-3">
                                             <div class="p-2 bd-highlight">
                                                 <button className="btn btn-warning px-4 previous-btn" onClick={goPrevious}>
@@ -115,6 +122,14 @@ const CourseContent = () => {
                                                         <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
                                                     </svg>
                                                     <span>Previous</span>
+                                                </button>
+                                            </div>
+                                            <div class="p-2 bd-highlight">
+                                                <button className="btn btn-primary px-4 me-auto"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle me-2" viewBox="0 0 16 16">
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                    <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+                                                </svg>
+                                                    <span>Mark As Complete</span>
                                                 </button>
                                             </div>
                                             <div class="p-2 bd-highlight">

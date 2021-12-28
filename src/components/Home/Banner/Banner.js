@@ -11,9 +11,10 @@ const Banner = ({ ok }) => {
     const [emblaRef] = useEmblaCarousel({ loop: false }, [Autoplay({ delay: 3000 })])
 
     useEffect(() => {
-        axios.get("/banners")
+        axios("/coursesdt")
             .then(data => {
-                setBannerDt(data.data)
+                const dataForBanner = data.data.filter(dt => dt.pinned === true)
+                setBannerDt(dataForBanner)
                 ok(true)
             })
     }, [])
@@ -33,11 +34,11 @@ const Banner = ({ ok }) => {
                                         <br />
                                         <div>Instructor: {dt.instructor}</div>
                                         <br />
-                                        <a href={dt.link}>
+                                        <a href={`/course/${dt.url}`}>
                                             <button className="btn btn-sm btn-primary px-4">View Details</button>
                                         </a>
                                     </div>
-                                    <img className='img-fluid bannerItemImg' src={dt.bg1} alt="" />
+                                    <img className='img-fluid bannerItemImg' src={dt.banner} alt="" />
                                 </div>
                             )
                         }

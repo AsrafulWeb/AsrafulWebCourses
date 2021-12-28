@@ -27,15 +27,18 @@ const Courses = ({ ok, home }) => {
                         {
                             coursesDt.map(dt =>
                                 <div class="col-sm-4">
-                                    <div class="card">
-                                        <img src={dt.thum} class="card-img-top" alt="..." />
+                                    <a href={"/course/" + dt.url} class="card text-dark" style={{width: "85%", cursor: "pointer"}}>
                                         <div class="card-body">
-                                            <h5 class="card-title">{dt.title}</h5>
+                                            <div className="courses-item-img-and-title mb-3">
+                                                <img src={dt.thum} class="card-img-top mb-3" alt="..." />
+                                                <h5 class="card-title ms-3 me-3">{dt.title}</h5>
+                                            </div>
+                                            <h6 className="text-danger ff-roboto"> <strong> ৳</strong> {dt.price}.00</h6>
                                             <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
                                             <p class="card-text"><small class="text-muted">Instructor: {dt.instructor}</small></p>
-                                            <a href={"/course/" + dt.url} className="btn btn-info btn-sm px-4">Enroll</a>
+                                            <a href={"/course/" + dt.url} className="btn btn-info btn-sm px-4 text-light">Enroll</a>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
                             )
                         }

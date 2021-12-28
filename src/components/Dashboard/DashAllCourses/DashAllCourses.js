@@ -15,6 +15,7 @@ const DashAllCourses = () => {
                 setCoursesLoader(false)
             })
             .catch(err => {
+                setCoursesLoader(false)
                 setDataErr(true)
             })
     }, [])
@@ -35,10 +36,8 @@ const DashAllCourses = () => {
                                 <>
                                     {
                                         dataErr ?
-                                            <div className="dashCoursesErr">
-                                                <br /><br />
+                                            <div className="dashCoursesErr pt-5 text-center">
                                                 <p>We get a error.</p>
-                                                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                                             </div> :
                                             coursesData?.map(cr =>
                                                 <DashCourses cr={cr} />

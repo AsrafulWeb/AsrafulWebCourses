@@ -125,14 +125,14 @@ const EnrollPage = () => {
                             <img className='coursesLoaderImg' src={loader} alt="" />
                             <br /><br />
                         </div>
-                        <br/>
+                        <br />
                         {
-                            enrolInfoErr? 
-                            <div className="alert alert-danger">
-                                <span>You Are Submitted Bad Info</span>
-                            </div>
-                            :
-                            ""
+                            enrolInfoErr ?
+                                <div className="alert alert-danger">
+                                    <span>You Are Submitted Bad Info</span>
+                                </div>
+                                :
+                                ""
                         }
                         <br />
                         <div style={{ display: coursesCss }}>
@@ -145,7 +145,7 @@ const EnrollPage = () => {
                                             <h6 class="card-text">{coursesDt.smallDes}</h6>
                                             {
                                                 coursesDt.premium ?
-                                                    <h3 className='text-danger'>Price: {coursesDt.price} ৳<strong></strong></h3>
+                                                    <h3 className='text-danger ff-roboto'>Price: {coursesDt.price} ৳</h3>
                                                     :
                                                     <h3 className='text-success'>Free<strong></strong></h3>
                                             }
@@ -175,34 +175,36 @@ const EnrollPage = () => {
                                         <div className="col-7 enrollCourseDetails text-center">
                                             <br /><br /><br />
                                             <button onClick={enrollSubmitForFree} className="btn btn-outline-success btn-lg">Enroll The Course</button>
-                                            <br/><br/><br/>
+                                            <br /><br /><br />
                                         </div>
                                 }
                                 <div className="col-1"></div>
                                 {
                                     coursesDt.premium ?
-                                        <div style={{ display: 'inline-block' }} className="card col-3 cartPaymentInfo">
-                                            <div className="card-body">
-                                                <div className="cartCheckoutBtnAndEtc">
-                                                    <h6>Your payment amount: <strong className="text-danger"> {coursesDt.price} ৳</strong></h6>
-                                                    <h5><span>Payment option:</span>
-                                                        <select className='btn btn-info btn-sm' name="choose" id="paymentOptionList">
-                                                            <option value="">Choose</option>
-                                                            <option value="">bKash</option>
-                                                            <option value="">Nagad</option>
-                                                            <option value="">Roket</option>
-                                                        </select>
-                                                    </h5>
-                                                </div>
-                                                {/* <div className="alert alert-dark">নিচের কোনো নাম্বারে আপনার <b>200</b> টাকা Send Money করে পাঠিয়ে Checkout করুন।</div>
+                                        <div className="col-3">
+                                            <div style={{ display: 'inline-block' }} className="card cartPaymentInfo">
+                                                <div className="card-body">
+                                                    <div className="cartCheckoutBtnAndEtc">
+                                                        <h6>Your payment amount: <strong className="text-danger ff-roboto"> {coursesDt.price} ৳</strong></h6>
+                                                        <h5><span>Payment option:</span>
+                                                            <select className='btn btn-info btn-sm' name="choose" id="paymentOptionList">
+                                                                <option value="">Choose</option>
+                                                                <option value="">bKash</option>
+                                                                <option value="">Nagad</option>
+                                                                <option value="">Roket</option>
+                                                            </select>
+                                                        </h5>
+                                                    </div>
+                                                    {/* <div className="alert alert-dark">নিচের কোনো নাম্বারে আপনার <b>200</b> টাকা Send Money করে পাঠিয়ে Checkout করুন।</div>
                                     <h5 className=""><strong>bKash: </strong>01631820368</h5>
                                     <h5 className=""><strong>Roket: </strong>016318203680</h5> */}
-                                                <br />
-                                                <div className="alert alert-secondary">বর্তমানে আমাদের সকল কোর্স ফ্রী তাই নিচের ইনফর্মেশন অনুযায়ী Checkout ফর্মটি পুরন করে Confirm করুন।</div>
-                                                <div style={{ paddingLeft: '8px', paddingRight: '0' }} className="alert alert-dark">
-                                                    <span className=""><b>Account number:</b> 01234729568</span><br />
-                                                    <span className=""><b>Trans ID:</b> 1293938ABCD12</span><br />
-                                                    <span className=""><b>Amount:</b> {coursesDt.price}</span><br />
+                                                    <br />
+                                                    <div className="alert alert-secondary">বর্তমানে আমাদের সকল কোর্স ফ্রী তাই নিচের ইনফর্মেশন অনুযায়ী Checkout ফর্মটি পুরন করে Confirm করুন।</div>
+                                                    <div style={{ paddingLeft: '8px', paddingRight: '0' }} className="alert alert-dark">
+                                                        <span className=""><b>Account number:</b> 01234729568</span><br />
+                                                        <span className=""><b>Trans ID:</b> 1293938ABCD12</span><br />
+                                                        <span className=""><b>Amount:</b> {coursesDt.price}</span><br />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

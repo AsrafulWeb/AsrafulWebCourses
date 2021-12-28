@@ -1,19 +1,31 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './header.css';
 import logo from './../../../logo/AsrafulsCourseLogo.png';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../Login/useAuth';
+import axios from 'axios';
 
 const Header = () => {
+
+    const [coursesDt, setCoursesDt] = useState([])
 
     const { user } = useAuth()
 
     const path = window.location.pathname;
 
+    // Get all courses data from DB
+    useEffect(() => {
+        axios("/coursesdt")
+            .then(data => {
+                setCoursesDt(data.data)
+            })
+    })
+
+    // Menage Active menu item
     useEffect(() => {
         if (user) {
             if (path === '/dashboard') {
-                
+
             }
         }
         if (path === '/') {
@@ -43,18 +55,33 @@ const Header = () => {
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-5">
                                 <li class="nav-item" id='navHome'>
-                                    <a class="nav-link" href="/">Home</a>
+                                    <a class="nav-link px-3" href="/">Home</a>
                                 </li>
                                 <li class="nav-item" id='navAbout'>
-                                    <a class="nav-link" href="/about">About</a>
+                                    <a class="nav-link px-3" href="/about">About</a>
                                 </li>
                                 <li class="nav-item dropdown" id='navCourses'>
-                                    <a class="nav-link" href="/courses">Courses</a>
+                                    <div class="dropdown">
+                                        <a class="nav-link px-3 dropdown-toggle" id="headerCoursesDropdown" href="/courses">Courses</a>
+                                        {
+                                            path === '/courses' ?
+                                                <></>
+                                                :
+                                                <ul class="dropdown-menu header-dropdown-menu" aria-labelledby="headerCoursesDropdown">
+                                                    {
+                                                        coursesDt?.map(dt =>
+                                                            <li><a class="dropdown-item" href={"/course/" + dt.url}>{dt.title}</a></li>
+                                                        )
+                                                    }
+                                                </ul>
+                                        }
+                                    </div>
+
                                 </li>
                                 <li class="nav-item" id='navContact'>
-                                    <a class="nav-link" href="/contact">Contact</a>
+                                    <a class="nav-link px-3" href="/contact">Contact</a>
                                 </li>
                             </ul>
                             <form class="d-flex navRight">
