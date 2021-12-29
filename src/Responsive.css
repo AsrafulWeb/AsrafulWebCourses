@@ -132,6 +132,23 @@
     .footerMain {
         height: 120px !important;
     }
+
+    /* Course Contnt Page */
+    .videoCFR{
+        margin-bottom: 20px !important;
+    }
+
+    .videoTFR{
+        width: 95% !important;
+    }
+
+    .coursesVideoMain > iframe {
+        height: 300px !important;
+    }
+
+    .content-change-btn{
+        display: none !important;
+    }
 }
 
 /*		Wide Mobile Layout: 480px.

@@ -100,22 +100,11 @@ const CourseContent = () => {
                         :
                         <div>
                             <div class="row">
-                                <div class="col-3 videoTFR" id='accordionExample'>
-                                    <div class="nav flex-column nav-pills htmlCoursesMenu" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                        {
-                                            videoData.map(vd =>
-                                                <Button style={{ textAlign: "left !important" }} className={vd?.id === activeItem?.id ? "activeCourseContent secondary text-left courseVideoBtn" : "secondary text-left courseVideoBtn"} onClick={() => {
-                                                    changeContent(vd?.id)
-                                                }} data-toggle="pill" >{vd?.title}</Button>
-                                            )
-                                        }
-                                    </div>
-                                </div>
                                 <div class="col-9 videoCFR">
                                     <div class="tab-content coursesVideoMain" id="v-pills-tabContent">
                                         <h4 className="videoTitleMain">{activeItem?.title}</h4>
                                         <iframe title={activeItem?.title} width="100%" height="464" src={activeItem?.url} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-                                        <div class="d-flex justify-content-between bd-highlight mb-3">
+                                        <div class="d-flex justify-content-between bd-highlight content-change-btn mb-3">
                                             <div class="p-2 bd-highlight">
                                                 <button className="btn btn-warning px-4 previous-btn" onClick={goPrevious}>
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="me-3 bi bi-arrow-left" viewBox="0 0 16 16">
@@ -141,6 +130,17 @@ const CourseContent = () => {
                                                 </button>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 videoTFR" id='accordionExample'>
+                                    <div class="nav flex-column nav-pills htmlCoursesMenu" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                        {
+                                            videoData.map(vd =>
+                                                <Button style={{ textAlign: "left !important" }} className={vd?.id === activeItem?.id ? "activeCourseContent secondary text-left courseVideoBtn" : "secondary text-left courseVideoBtn"} onClick={() => {
+                                                    changeContent(vd?.id)
+                                                }} data-toggle="pill" >{vd?.title}</Button>
+                                            )
+                                        }
                                     </div>
                                 </div>
                             </div>
