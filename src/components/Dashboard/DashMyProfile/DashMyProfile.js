@@ -6,7 +6,7 @@ const DashMyProfile = () => {
     const auth = useAuth()
 
     return (
-        <div class="DashMyProfile" id="profile" >
+        <div class="DashMyProfile mt-5" id="profile" >
             {
                 auth.user && <div style={{ width: '400px' }} className="card text-center">
                     <div className="card-body">

@@ -4,12 +4,13 @@ import logo from './../../../logo/AsrafulsCourseLogo.png';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../Login/useAuth';
 import axios from 'axios';
+import maleAvatar from './../../../logo/male_avater.png'
 
 const Header = () => {
 
     const [coursesDt, setCoursesDt] = useState([])
 
-    const { user } = useAuth()
+    const { user, signOut } = useAuth()
 
     const path = window.location.pathname;
 
@@ -78,25 +79,41 @@ const Header = () => {
                                                 </ul>
                                         }
                                     </div>
-
                                 </li>
                                 <li class="nav-item" id='navContact'>
                                     <a class="nav-link px-3" href="/contact">Contact</a>
                                 </li>
                             </ul>
-                            <form class="d-flex navRight">
-                                <div className="d-flex">
-                                    <input id='headerSearchInput' class="form-control mr-sm-2" type="Search" placeholder="Search our courses" aria-label="Search" />
-                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                                </div>
-                                <div className="nav_dash_login_btn">
-                                    {
-                                        user ?
-                                            <Link id='navDashboard' style={{ marginLeft: '30px' }} to="/dashboard" className="btn btn-info text-light btn-sm">Dashboard</Link> :
-                                            <a href="/login" style={{ marginLeft: '30px' }} type="button" class="btn btn-danger btn-sm">Login & Sign Up</a>
-                                    }
-                                </div>
-                            </form>
+                            <div class="d-flex navRight">
+                                <form className="d-flex nav-right-search-form input-group">
+                                    <input type="text" class="form-control ps-4" placeholder="Search Course" aria-label="Search" aria-describedby="button-addon2" />
+                                    <button class="btn btn-outline-secondary" type="button" id="">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-search mb-1" viewBox="0 0 16 16">
+                                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                        </svg>
+                                    </button>
+                                </form>
+                                <ul className="navbar-nav nav_dash_login_btn nvabar-nav" style={{ marginLeft: '30px' }}>
+                                    <li className="nav-item">
+                                        {
+                                            user ?
+                                                <div class="dropdown">
+                                                    <Link class="" role="button" id="headerAccountSection" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <img className='' src={user?.photo?.length > 2 ? user.photo : maleAvatar} alt="User Profile" style={{width: "33px", height: "33px"}} />
+                                                    </Link>
+                                                    <ul class="dropdown-menu" aria-labelledby="headerAccountSection">
+                                                        <li><Link class="dropdown-item" to="/admin">Admin</Link></li>
+                                                        <li><Link class="dropdown-item" to="/dashboard/account">My Account</Link></li>
+                                                        <li><Link class="dropdown-item" to="/dashboard/courses">My Courses</Link></li>
+                                                        <li><Link class="dropdown-item" onClick={signOut}>Log Out</Link></li>
+                                                    </ul>
+                                                </div>
+                                                :
+                                                <a href="/login" type="button" class="btn btn-danger btn-sm" style={{width: "150px"}}>Login & Sign Up</a>
+                                        }
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </nav>

@@ -1,0 +1,16 @@
+.dashCourseItem{
+    
+}
+
+.dashCourseItemDetails{
+    background-color: rgb(218, 218, 218);
+    border-radius: 8px;
+}
+
+.dashCourseItemDetails img{
+    border-radius: 8px;
+}
+
+.dashCourseItembProgress{
+    margin: 0 !important;
+}

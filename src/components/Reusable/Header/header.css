@@ -15,6 +15,23 @@
     display: none;
 }
 
+.nav-right-search-form{
+    height: 40px;
+}
+
+.nav-right-search-form button{
+    border-radius: 0 20px 20px 0;
+    border: 1px solid #CED4DA;
+    background-color: #fff;
+    border-left: none;
+}
+
+.nav-right-search-form input{
+    height: 40px;
+    border-radius: 20px 0 0 20px;
+    border-right: none;
+}
+
 @media all and (min-width: 992px) {
 	.navbar .nav-item .dropdown-menu{ display: none; }
 	.navbar .nav-item:hover .dropdown-menu{ display: block; }

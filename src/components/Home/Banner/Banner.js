@@ -35,7 +35,7 @@ const Banner = ({ ok }) => {
                                         <div>Instructor: {dt.instructor}</div>
                                         <br />
                                         <a href={`/course/${dt.url}`}>
-                                            <button className="btn btn-sm btn-primary px-4">View Details</button>
+                                            <button className="button-sm button-red-outline px-4">View Details</button>
                                         </a>
                                     </div>
                                     <img className='img-fluid bannerItemImg' src={dt.banner} alt="" />

@@ -106,7 +106,7 @@ const CourseContent = () => {
                                         <iframe title={activeItem?.title} width="100%" height="464" src={activeItem?.url} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
                                         <div class="d-flex justify-content-between bd-highlight content-change-btn mb-3">
                                             <div class="p-2 bd-highlight">
-                                                <button className="btn btn-warning px-4 previous-btn" onClick={goPrevious}>
+                                                <button className="button button-yeallow btn px-4 previous-btn" onClick={goPrevious}>
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="me-3 bi bi-arrow-left" viewBox="0 0 16 16">
                                                         <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
                                                     </svg>
@@ -114,7 +114,7 @@ const CourseContent = () => {
                                                 </button>
                                             </div>
                                             <div class="p-2 bd-highlight">
-                                                <button className="btn btn-primary px-4 me-auto"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle me-2" viewBox="0 0 16 16">
+                                                <button className="btn button button-blue px-4 me-auto"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle me-2" viewBox="0 0 16 16">
                                                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                                     <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
                                                 </svg>
@@ -122,7 +122,7 @@ const CourseContent = () => {
                                                 </button>
                                             </div>
                                             <div class="p-2 bd-highlight">
-                                                <button className="btn btn-warning px-4 me-auto next-btn" onClick={goNext} >
+                                                <button className="button button-yeallow btn px-4 me-auto next-btn" onClick={goNext} >
                                                     <span>Next</span>
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="ms-3 bi bi-arrow-right" viewBox="0 0 16 16">
                                                         <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />

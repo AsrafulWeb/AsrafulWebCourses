@@ -1,0 +1,43 @@
+/* Header Css */
+
+.admin-search input{
+    border: 1px solid #EFE9E1;
+    border-radius: 10px;
+    box-shadow: none !important;
+}
+
+.admin-search .btn{
+    border-radius: 10px;
+    box-shadow: none !important;
+    border: 1px solid #EFE9E1;
+}
+
+.admin-header-dropdown-1{
+    border: none;
+    background: none;
+    border-radius: 50%;
+    padding: 5px;
+    width: 32px;
+    height: 33px;
+    transition: all .4s;
+}
+
+.admin-header-dropdown-1:hover{
+    background: rgb(214, 214, 214);
+}
+
+/* Header Css */
+
+/* Header Navs */
+
+.admin-navs .nav-link:hover{
+    background-color: #ececec !important;
+}
+
+.admin-navs .active:hover{
+    background-color: #0d6dfdd3 !important;
+}
+
+
+
+/* Header Navs */

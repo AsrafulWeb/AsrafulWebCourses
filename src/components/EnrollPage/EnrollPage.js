@@ -186,18 +186,21 @@ const EnrollPage = () => {
                                                 <div className="card-body">
                                                     <div className="cartCheckoutBtnAndEtc">
                                                         <h6>Your payment amount: <strong className="text-danger ff-roboto"> {coursesDt.price} ৳</strong></h6>
-                                                        <h5><span>Payment option:</span>
-                                                            <select className='btn btn-info btn-sm' name="choose" id="paymentOptionList">
+                                                        <div className='d-flex'>
+                                                            <h5 className='mt-2'>Payment option:</h5>
+                                                            <select className='form-select form-select-sm mb-3 ms-auto text-dark' name="choose" id="paymentOptionList" style={{ width: "85px" }}>
                                                                 <option value="">Choose</option>
                                                                 <option value="">bKash</option>
                                                                 <option value="">Nagad</option>
                                                                 <option value="">Roket</option>
+                                                                <option value="">Upay</option>
+                                                                <option value="">Paypal</option>
                                                             </select>
-                                                        </h5>
+                                                        </div>
                                                     </div>
                                                     {/* <div className="alert alert-dark">নিচের কোনো নাম্বারে আপনার <b>200</b> টাকা Send Money করে পাঠিয়ে Checkout করুন।</div>
-                                    <h5 className=""><strong>bKash: </strong>01631820368</h5>
-                                    <h5 className=""><strong>Roket: </strong>016318203680</h5> */}
+                                                        <h5 className=""><strong>bKash: </strong>01631820368</h5>
+                                                        <h5 className=""><strong>Roket: </strong>016318203680</h5> */}
                                                     <br />
                                                     <div className="alert alert-secondary">বর্তমানে আমাদের সকল কোর্স ফ্রী তাই নিচের ইনফর্মেশন অনুযায়ী Checkout ফর্মটি পুরন করে Confirm করুন।</div>
                                                     <div style={{ paddingLeft: '8px', paddingRight: '0' }} className="alert alert-dark">

@@ -1,0 +1,9 @@
+.loginMain .card{
+    box-shadow: 0 2px 10px 0px #d4d2d2;
+}
+
+.pwd-ctrl-btn{
+    border: 1px solid #CED4DA;
+    background-color: #fff;
+    border-left: none;
+}

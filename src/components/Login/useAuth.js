@@ -39,6 +39,7 @@ export const PrivateRoute = ({ children, ...rest }) => {
         />
     );
 }
+
 export const PrivateRouteForLogin = ({ children, ...rest }) => {
     const auth = useAuth();
     const pathN = window.history.back();
@@ -93,6 +94,7 @@ const Auth = () => {
                     tokenAdder()
                     tokenAdder()
                     window.history.back();
+                    window.location.reload();
                 });
             })
             .catch(err => {
@@ -109,6 +111,7 @@ const Auth = () => {
                 tokenAdder()
                 tokenAdder()
                 window.history.back();
+                window.location.reload();
             })
             .catch(err => {
                 setSignInSignUpError(err.message)
@@ -120,6 +123,7 @@ const Auth = () => {
         firebase.auth().signOut()
             .then(res => {
                 setUser(null)
+                window.location.reload();
             })
             .catch(err => {
                 setSignInSignUpError(err.message)

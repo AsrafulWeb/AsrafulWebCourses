@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import SignIn from './SignIn/SignIn';
 import SignUp from './SignUp/SignUp';
 import { useAuth } from './useAuth';
+import './login.css'
 
 const Login = () => {
 
@@ -14,19 +15,20 @@ const Login = () => {
 
     useEffect(() => {
         if (user) {
-            history.replace('/dashboard')
+            history.goBack()
         }
     }, [history, user])
 
     return (
         <div className='loginMain'>
             <div className="container">
-                <br />
                 <div className='d-flex justify-content-center'>
                     {
                         user ?
-                            <div className="alert alert-success text-center text-dark">
-                                <h1>You are Signed In</h1>
+                            <div style={{ paddingTop: "33vh" }}>
+                                <div className="alert alert-success text-center text-dark">
+                                    <h1>You are Signed In</h1>
+                                </div>
                             </div>
                             :
                             <div className="loginForm col-sm-4">

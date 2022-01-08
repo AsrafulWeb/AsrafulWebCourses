@@ -8,7 +8,6 @@ import {
 } from "react-router-dom";
 import Header from './components/Reusable/Header/Header';
 import CoursePage from './components/CoursePage/CoursePage';
-import Dashboard from './components/Dashboard/Dashboard';
 import Contact from './components/Contact/Contact';
 import About from './components/About/About';
 import Footer from './components/Reusable/Footer/Footer';
@@ -20,6 +19,11 @@ import EnrollPage from './components/EnrollPage/EnrollPage';
 import HomeLoader from './components/Reusable/HomeLoader/HomeLoader';
 import Courses from './components/Courses/Courses';
 import Home from './components/Home/Home';
+import DashMyProfile from './components/Dashboard/DashMyProfile/DashMyProfile';
+import DashMyCourses from './components/Dashboard/DashMyCourses/DashMyCourses';
+import Admin from './components/Admin/Admin';
+import AdminHeader from './components/Admin/AdminHeader/AdminHeader';
+import AdminHome from './components/Admin/AdminHome/AdminHome/AdminHome';
 
 function App() {
 
@@ -34,19 +38,27 @@ function App() {
     <div className="App">
       <AuthProvider>
         <Router>
-          <Header />
-          <div className="content">
-            <Switch>
-              <Route path="/test">
-                <Test />
-              </Route>
-              <Route path="/about">
+          <Switch>
+            <Route path="/test">
+              <Test />
+            </Route>
+            <Route path="/about">
+              <Header />
+              <div className="content">
                 <About />
-              </Route>
-              <Route path="/contact">
+              </div>
+              <Footer />
+            </Route>
+            <Route path="/contact">
+              <Header />
+              <div className="content">
                 <Contact />
-              </Route>
-              <Route exact path="/courses">
+              </div>
+              <Footer />
+            </Route>
+            <Route exact path="/courses">
+              <Header />
+              <div className="content">
                 {
                   coursesPgOk ?
                     ""
@@ -54,28 +66,60 @@ function App() {
                     <HomeLoader />
                 }
                 <Courses ok={coursesPageOk} />
-              </Route>
-              <Route path="/course/:curl">
+              </div>
+              <Footer />
+            </Route>
+            <Route path="/course/:curl">
+              <Header />
+              <div className="content">
                 <CoursePage />
-              </Route>
-              <PrivateRoute path="/enroll/:eurl">
+              </div>
+              <Footer />
+            </Route>
+            <PrivateRoute path="/enroll/:eurl">
+              <Header />
+              <div className="content">
                 <EnrollPage />
-              </PrivateRoute>
-              <PrivateRoute path="/dashboard">
-                <Dashboard />
-              </PrivateRoute>
-              <Route path="/login">
+              </div>
+            </PrivateRoute>
+            <PrivateRoute path="/dashboard/account">
+              <Header />
+              <div className="content">
+                <DashMyProfile />
+              </div>
+            </PrivateRoute>
+            <PrivateRoute path="/dashboard/courses">
+              <Header />
+              <div className="content">
+                <DashMyCourses />
+              </div>
+              <Footer />
+            </PrivateRoute>
+            <Router path="/admin">
+              <Admin />
+            </Router>
+            <Route path="/login">
+              <Header />
+              <div className="content">
                 <Login />
-              </Route>
-              <Route exact path="/">
+              </div>
+              <Footer />
+            </Route>
+            <Route exact path="/">
+              <Header />
+              <div className="content">
                 <Home />
-              </Route>
-              <Route exact path="*">
+              </div>
+              <Footer />
+            </Route>
+            <Route exact path="*">
+              <Header />
+              <div className="content">
                 <Error />
-              </Route>
-            </Switch>
-          </div>
-          <Footer />
+              </div>
+              <Footer />
+            </Route>
+          </Switch>
         </Router>
       </AuthProvider>
     </div>

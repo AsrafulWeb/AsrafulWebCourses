@@ -5,25 +5,109 @@
     text-decoration: none;
 }
 
-body{
+body {
     height: 100vh !important;
 }
 
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
 }
 
-a{    
+a {
     text-decoration: none;
 }
 
-.content{
+.content {
     min-height: 100vh !important;
 }
 
-.ff-roboto{
+.ff-roboto {
     font-family: 'Roboto', sans-serif;
+}
+.button {
+    font-size: 17px;
+    font-weight: bold;
+    border-radius: 6px;
+    padding: 10px 35px;
+    transition: all 0.4s;
+}
+
+.button-sm {
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 6px;
+    padding: 6px 22px;
+    transition: all 0.4s;
+}
+
+.button-red {
+    border: none;
+    color: #D6293E;
+    background: #D6293E20;
+}
+
+.button-red:hover {
+    color: #fff;
+    background: #D6293E;
+}
+
+.button-blue {
+    border: none;
+    color: #0b5dd7;
+    background: #0B5ED720;
+}
+
+.button-blue:hover {
+    color: #fff;
+    background: #0b5dd7;
+}
+
+.button-green {
+    border: none;
+    color: #45C881;
+    background: #45C88120;
+}
+
+.button-green:hover {
+    color: #fff;
+    background: #45C881;
+}
+
+.button-yeallow {
+    border: none;
+    color: #FFC107;
+    background: #FFC10720;
+}
+
+.button-yeallow:hover {
+    color: #fff;
+    background: #FFC107;
+}
+
+.button-green-outline {
+    border: 1px solid #78d3a1;
+    color: #45C881;
+    background: #45C88120;
+}
+
+.button-green-outline:hover {
+    border: 1px solid #45C881;
+    color: #fff;
+    background: #45C881;
+}
+
+.button-red-outline {
+    border: 1px solid #ce636f;
+    color: #fff;
+    background: #D6293E35;
+}
+
+.button-red-outline:hover {
+    border: 1px solid #D6293E;
+    color: #fff;
+    background: #D6293E;
 }
 
 /* header css */
@@ -174,12 +258,12 @@ a{
     color: white;
 }
 
-body{
+body {
     position: relative;
 }
 
 /* Full page loader section */
-.homePageLoader{
+.homePageLoader {
     position: fixed;
     top: 0;
     left: 0;
@@ -189,8 +273,21 @@ body{
     background: #fff;
 }
 
-.homeLoader{
+.homeLoader {
     margin-top: 48vh !important;
 }
 
 /* Login page */
+
+
+
+
+
+
+
+
+.owl-carousel div {
+    width: 100px;
+    height: 100px;
+    background-color: green;
+}
