@@ -20,12 +20,11 @@ const getUser = user => {
 }
 
 export const PrivateRoute = ({ children, ...rest }) => {
-    const { user } = useAuth()
     return (
         <Route
             {...rest}
             render={({ location }) =>
-                user ? (
+                sessionStorage.getItem("token") ? (
                     children
                 ) : (
                     <Redirect
@@ -41,13 +40,12 @@ export const PrivateRoute = ({ children, ...rest }) => {
 }
 
 export const PrivateRouteForLogin = ({ children, ...rest }) => {
-    const auth = useAuth();
     const pathN = window.history.back();
     return (
         <Route
             {...rest}
             render={({ location }) =>
-                auth.user ? (
+                sessionStorage.getItem("token") ? (
                     <Redirect
                         to={{
                             pathname: pathN,
@@ -67,6 +65,8 @@ const Auth = () => {
     const [user, setUser] = useState(null)
 
     const [signInSignUpError, setSignInSignUpError] = useState('')
+
+    const userToken = sessionStorage.getItem("token")
 
     const gSignIn = () => {
         const provider = new firebase.auth.GoogleAuthProvider();
@@ -153,12 +153,13 @@ const Auth = () => {
     }
 
     return {
+        user,
+        userToken,
         gSignIn,
         passSignup,
         passLogin,
-        signOut,
-        user,
-        signInSignUpError
+        signInSignUpError,
+        signOut
     };
 };
 

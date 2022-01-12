@@ -13,6 +13,8 @@ import { useEffect } from 'react';
 import './Admin.css';
 import { useState } from 'react';
 import axios from 'axios';
+import AdminCourses from './AdminCourses/AdminCourses';
+import AdminCourseAdd from './AdminCourses/AdminCourseAdd/AdminCourseAdd';
 
 const Admin = () => {
 
@@ -59,6 +61,12 @@ const Admin = () => {
                                                                 <div className="adminOptions col-sm-10">
                                                                     <AdminHeader />
                                                                     <Switch>
+                                                                        <Route path="/admin/courses/add-item">
+                                                                            <AdminCourseAdd />
+                                                                        </Route>
+                                                                        <Route path="/admin/courses">
+                                                                            <AdminCourses />
+                                                                        </Route>
                                                                         <Route path="/admin/dashboard">
                                                                             <AdminHome />
                                                                         </Route>
@@ -86,8 +94,12 @@ const Admin = () => {
                         }
                     </>
                     :
-                    <>
-                    </>
+                    <div className='text-center'>
+                        <div style={{paddingTop: "45vh"}}>
+                            <h3 className='mb-4'>You are not logged in. Pleace Login.</h3>
+                            <a href="/login" className="btn btn-sm btn-primary px-4">Login Now</a>
+                        </div>
+                    </div>
             }
         </div>
     );

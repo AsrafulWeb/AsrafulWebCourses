@@ -33,8 +33,8 @@ const Courses = ({ ok, home }) => {
                                                 <img src={dt.thum} class="card-img-top mb-3" alt="..." />
                                                 <h5 class="card-title ms-3 me-3">{dt.title}</h5>
                                             </div>
-                                            <h6 className="text-danger ff-roboto"> <strong> ৳</strong> {dt.price}.00</h6>
-                                            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            <h6 className="text-danger ff-roboto"> <strong> </strong> {dt?.price.length > 1 ? "৳ "+dt?.price+" .00" : "Free"}</h6>
+                                            <p class="card-text">This card has supporting text below as a natural lead-in to additional content. </p>
                                             <p class="card-text"><small class="text-muted">Instructor: {dt.instructor}</small></p>
                                             <a href={"/course/" + dt.url} className="btn button-sm button-green-outline">
                                                 <span>Enroll Now</span>

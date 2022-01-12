@@ -1,0 +1,19 @@
+.adminOptions {
+    max-height: 100vh;
+    overflow-y: auto;
+}
+
+.admin-courses-item-card {
+    cursor: pointer;
+    border: none !important;
+    width: 95% !important;
+    float: left !important;
+    box-shadow: 0 2px 10px 0px #d4d2d28a;
+}
+
+.admin-course-item-add-btn {
+    margin: 40px 0;
+    padding: 120px 0;
+}
+
+.admin-course-item-quick-edit {}

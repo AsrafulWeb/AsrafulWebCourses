@@ -9,7 +9,7 @@ const CourseContent = () => {
     const [preloader, setPreloader] = useState(true)
     const [courseErr, setCourseErr] = useState(false)
 
-    const [videoData, setVideoData] = useState([])
+    const [courseContent, setcourseContent] = useState(null)
 
     const [activeItem, setActiveItem] = useState(null)
 
@@ -19,54 +19,45 @@ const CourseContent = () => {
 
     // Get course data from db
     useEffect(() => {
-        axios(`/coursesdata?url=${curl}`)
-            .then(data => {
-                console.log(data.data)
-                setCourseDt(data.data)
-                setCourseErr(false)
-                axios(`/coursesv?course=${curl}`, {
-                    method: "GET",
-                    headers: {
-                        "Content-Type": "application/json",
-                        authorization: `Bearer ${userToken}`
-                    }
+        setPreloader(true)
+        axios(`/coursesv?course=${curl}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${userToken}`
+            }
+        })
+            .then(dt => {
+                const contentDt = dt.data
+                const sortedDt = contentDt?.content.sort((a, b) => {
+                    return a.nu - b.nu
                 })
-                    .then(dt => {
-                        console.log(dt.data)
-                        const contentDt = dt.data
-                        const sortedDt = contentDt.sort((a, b) => {
-                            return a.nu - b.nu
-                        })
-                        setVideoData(sortedDt)
-                        setActiveItem(contentDt[0])
-                        setPreloader(false)
-                    })
-                    .catch(err => {
-                        setPreloader(false)
-                        setCourseErr(true)
-                    })
+                delete contentDt.content
+                setCourseDt(contentDt)
+                setcourseContent(sortedDt)
+                setActiveItem(sortedDt[0])
+                setPreloader(false)
             })
             .catch(err => {
                 setPreloader(false)
                 setCourseErr(true)
-                console.log(err)
             })
     }, [curl, userToken])
 
     // Set selcted item data in satae
     const changeContent = (id) => {
-        const changedData = videoData.find(dt => id === dt.id)
+        const changedData = courseContent.find(dt => id === dt.id)
         setActiveItem(changedData)
     }
 
     // Handle previous item show
     const goPrevious = () => {
-        setActiveItem(videoData[parseInt(activeItem.nu) - 2])
+        setActiveItem(courseContent[parseInt(activeItem.nu) - 2])
     }
 
     // Handle next item show
     const goNext = () => {
-        setActiveItem(videoData[parseInt(activeItem.nu)])
+        setActiveItem(courseContent[parseInt(activeItem.nu)])
     }
 
     useEffect(() => {
@@ -75,17 +66,18 @@ const CourseContent = () => {
                 document.querySelector(".previous-btn").disabled = true;
             } else {
                 document.querySelector(".previous-btn").disabled = false;
-            } if (videoData.length === parseInt(activeItem?.nu)) {
+            } if (courseContent?.length === parseInt(activeItem?.nu)) {
                 document.querySelector(".next-btn").disabled = true;
             } else {
                 document.querySelector(".next-btn").disabled = false;
             }
         }
-    }, [preloader, videoData, activeItem])
+    }, [preloader, courseContent, activeItem])
 
 
-    console.log(activeItem)
-    console.log(videoData)
+    console.log(courseDt)
+    console.log(courseContent)
+    console.log(courseErr)
 
 
     return (
@@ -135,7 +127,7 @@ const CourseContent = () => {
                                 <div class="col-3 videoTFR" id='accordionExample'>
                                     <div class="nav flex-column nav-pills htmlCoursesMenu" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                         {
-                                            videoData.map(vd =>
+                                            courseContent?.map(vd =>
                                                 <Button style={{ textAlign: "left !important" }} className={vd?.id === activeItem?.id ? "activeCourseContent secondary text-left courseVideoBtn" : "secondary text-left courseVideoBtn"} onClick={() => {
                                                     changeContent(vd?.id)
                                                 }} data-toggle="pill" >{vd?.title}</Button>
