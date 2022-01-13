@@ -69,7 +69,7 @@ const DashMyCourses = () => {
                                                         <h4 className='me-auto'>Your Courses</h4>
                                                         <form class="row g-2">
                                                             <div class="col-auto">
-                                                                <input type="password" class="form-control rounded-pill" id="coursesSearchInput" placeholder="Course Name" />
+                                                                <input type="text" class="form-control rounded-pill" id="coursesSearchInput" placeholder="Course Name" />
                                                             </div>
                                                             <div class="col-auto">
                                                                 <button type="submit" class="btn btn-primary rounded-pill">
